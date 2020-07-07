@@ -1,21 +1,16 @@
 const express = require("express");
-
 const app = express();
-
+const bodyParser = require("body-parser");
 // load all my Routes
-
 const Products = require("./routes/productRoute");
-const User = require("./routes/userRoute");
-const Historique = require("./routes/historiqueRoute");
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Use my Routes
-
 app.use("/Lital/Product", Products);
-app.use("/Lital/User", User);
-app.use("/Lital/Historique", Historique);
 
 // Server connection
-
 const Port = 5000;
 
 app.listen(Port, (err) => {
